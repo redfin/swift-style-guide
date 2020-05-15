@@ -1,9 +1,13 @@
-# The Official raywenderlich.com Swift Style Guide.
-### Updated for Swift 4.2
+# Redfin Swift Style Guide.
 
-This style guide is different from others you may see, because the focus is centered on readability for print and the web. We created this style guide to keep the code in our books, tutorials, and starter kits nice and consistent — even though we have many different authors working on the books.
 
-Our overarching goals are clarity, consistency and brevity, in that order.
+## Adapted from the Official raywenderlich.com Swift Style Guide.
+
+Our style guide has been adapted from the https://github.com/raywenderlich/swift-style-guide style guide. Please note that our existing codebase may not always follow these patterns because they have evolved over time, but all new code going forward should follow them.
+
+Please help us improve our codebase by referring to this style guide for all pull requests.
+
+Our overarching goals are conciseness, readability, and simplicity.
 
 ## Table of Contents
 
