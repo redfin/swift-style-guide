@@ -87,7 +87,7 @@ Descriptive and consistent naming makes software easier to read and understand. 
 - labeling closure and tuple parameters
 - taking advantage of default parameters
 
-Corollary to Protocol Naming: Protocols that are simply used to compose objects should have `Protocol` as a suffix. E.g. Call a protocol `ThingProtocol` when `Thing` would traditionally have been a non-abstract class. With this naming convention, `Thing` would be a concrete type that implements `ThingProtocol`. See: https://github.com/raywenderlich/swift-style-guide/issues/123#issuecomment-167159415 for inspiration. 
+Corollary to Protocol Naming: Protocols that are simply used to compose objects should have `Protocol` as a suffix. E.g. Call a protocol `ThingProtocol` when `Thing` would traditionally have been a non-abstract class. With this naming convention, `Thing` would be a concrete type that implements `ThingProtocol`.
 
 ### Class Prefixes
 
