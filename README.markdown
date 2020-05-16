@@ -336,6 +336,24 @@ class TestDatabase : Database {
 
 * Add a single newline character at the end of each file.
 
+* Methods and control statements should have a single space between the closing parenthesis and opening bracket. For example: 
+
+```swift
+func method() { 
+  // stuff here
+}
+
+func methodWithReturn() -> Type {
+  // stuff here
+}
+
+if (condition) {
+  // stuff here
+} else {
+  // stuff here
+}
+```
+
 ## Comments
 
 When they are needed, use comments to explain **why** a particular piece of code does something. Comments must be kept up-to-date or deleted.
