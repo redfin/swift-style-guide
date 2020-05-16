@@ -87,6 +87,8 @@ Descriptive and consistent naming makes software easier to read and understand. 
 - labeling closure and tuple parameters
 - taking advantage of default parameters
 
+Corollary to Protocol Naming: Protocols that are simply used to compose objects should have `Protocol` as a suffix. E.g. Call a protocol `ThingProtocol` when `Thing` would traditionally have been a non-abstract class. With this naming convention, `Thing` would be a concrete type that implements `ThingProtocol`. See: https://github.com/raywenderlich/swift-style-guide/issues/123#issuecomment-167159415 for inspiration. 
+
 ### Class Prefixes
 
 Swift types are automatically namespaced by the module that contains them and you should not add a class prefix such as RW. If two names from different modules collide you can disambiguate by prefixing the type name with the module name. However, only specify the module name when there is possibility for confusion, which should be rare.
@@ -168,6 +170,26 @@ let colour = "red"
 ## Code Organization
 
 Use extensions to organize your code into logical blocks of functionality. Each extension should be set off with a `// MARK: -` comment to keep things well-organized.
+
+Note that even though the two conventions `// MARK: vs // MARK: -` look similar, we prefer the latter dash convention to create visual separation for the method drop down list within Xcode.
+
+Extensions on common Foundation classes should be suffixed with `+Helpers.swift` in their own dedicated file. An example of this would be `URL+Helpers.swift` for the following extension:
+
+```swift
+import Foundation
+
+extension URL {
+    var isPhoneNumber: Bool {
+      // stuff here
+    }
+
+    func appending(_ queryItem: String, value: String) -> URL? {
+      // stuff here
+    }
+}
+```
+
+We prefer grouping public properties at the beginning of a class or struct, and private properties after public properties to make our files easy to scan through.
 
 ### Protocol Conformance
 
@@ -412,7 +434,7 @@ var diameter: Double {
 
 ### Final
 
-Marking classes or members as `final` in tutorials can distract from the main topic and is not required. Nevertheless, use of `final` can sometimes clarify your intent and is worth the cost. In the below example, `Box` has a particular purpose and customization in a derived class is not intended. Marking it `final` makes that clear.
+Marking classes or members as `final` can sometimes clarify your intent and is worth the cost. In the below example, `Box` has a particular purpose and customization in a derived class is not intended. Marking it `final` makes that clear.
 
 ```swift
 // Turn any generic type into a reference type using this Box class.
@@ -709,7 +731,9 @@ var faxNumber: Optional<Int>
 
 ## Memory Management
 
-Code (even non-production, tutorial demo code) should not create reference cycles. Analyze your object graph and prevent strong cycles with `weak` and `unowned` references. Alternatively, use value types (`struct`, `enum`) to prevent cycles altogether.
+Code (even non-production, debugging, and demo code) should not create reference cycles. Analyze your object graph and prevent strong cycles with `weak` and `unowned` references. Alternatively, use value types (`struct`, `enum`) to prevent cycles altogether.
+
+Special note for IBOutlets: Instead of using weak broadly for IBOutlets, we prefer strong IBOutlets. The current recommended best practice from Apple is for IBOutlets to be strong unless weak is specifically needed to avoid a retain cycle.
 
 ### Extending object lifetime
 
@@ -744,13 +768,15 @@ resource.request().onComplete { [weak self] response in
 }
 ```
 
+Note: When exploring legacy code, you may encounter usages of `guard let wkSelf = self` or `guard let strSelf = self`. We prefer `guard let self = self` over these conventions. 
+
 ## Access Control
 
 Full access control annotation in tutorials can distract from the main topic and is not required. Using `private` and `fileprivate` appropriately, however, adds clarity and promotes encapsulation. Prefer `private` to `fileprivate`; use `fileprivate` only when the compiler insists.
 
 Only explicitly use `open`, `public`, and `internal` when you require a full access control specification.
 
-Use access control as the leading property specifier. The only things that should come before access control are the `static` specifier or attributes such as `@IBAction`, `@IBOutlet` and `@discardableResult`.
+Use access control as the leading property specifier. The only things that should come before access control are the `static` specifier or attributes such as `@IBAction`, `@IBOutlet` and `@discardableResult`. That means that we prefer `private lazy var` over `lazy private var` to keep our access modifiers easy to scan through.
 
 **Preferred**:
 ```swift
