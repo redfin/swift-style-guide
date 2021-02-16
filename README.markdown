@@ -429,6 +429,25 @@ For conciseness, avoid using `self` since Swift does not require it to access an
 
 Use self only when required by the compiler (in `@escaping` closures, or in initializers to disambiguate properties from arguments). In other words, if it compiles without `self` then omit it.
 
+### Capturing Weak Self
+
+Apple has added official syntax to better to capture `weak self` with Swift 4.2. This allows us to capture `weak self` without having to create a temporary non-optinal `strongSelf` reference.  
+
+**Preferred**:
+```swift
+UIView.animate(withDuration: 2.0) { [weak self] in
+  guard let self = self else { return }
+  self.alpha = 1.0
+}
+```
+
+**Not Preferred**:
+```swift
+UIView.animate(withDuration: 2.0) { [weak self] in
+  guard let stringSelf = self else { return }
+  stringSelf.alpha = 1.0
+}
+```
 
 ### Computed Properties
 
