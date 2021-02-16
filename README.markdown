@@ -191,6 +191,8 @@ extension URL {
 
 We prefer grouping public properties at the beginning of a class or struct, and private properties after public properties to make our files easy to scan through.
 
+Note: Helper files should be created under the `Classes/ Common Components` directory.
+
 ### Protocol Conformance
 
 In particular, when adding protocol conformance to a model, prefer adding a separate extension for the protocol methods. This keeps the related methods grouped together with the protocol and can simplify instructions to add a protocol to a class with its associated methods.
