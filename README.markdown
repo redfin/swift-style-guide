@@ -26,6 +26,7 @@ Our overarching goals are conciseness, readability, and simplicity.
 * [Comments](#comments)
 * [Classes and Structures](#classes-and-structures)
   * [Use of Self](#use-of-self)
+  * [Capturing Weak Self](#capturing-weak-self)
   * [Protocol Conformance](#protocol-conformance)
   * [Computed Properties](#computed-properties)
   * [Final](#final)
