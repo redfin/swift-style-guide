@@ -194,6 +194,10 @@ We prefer grouping public properties at the beginning of a class or struct, and 
 
 Note: Helper files should be created under the `Classes/ Common Components` directory.
 
+### URL String
+ 
+Declare Redfin's interal URL within it's corresponding data controller seperated by feature. For example, all RedfinNow related end-poitns should be added to `RedfinNowDataController`. For external urls, we should add the them to a single dedicated file. 
+
 ### Protocol Conformance
 
 In particular, when adding protocol conformance to a model, prefer adding a separate extension for the protocol methods. This keeps the related methods grouped together with the protocol and can simplify instructions to add a protocol to a class with its associated methods.
@@ -596,6 +600,37 @@ let value = numbers
   .map {$0 * 2}
   .filter {$0 > 50}
   .map {$0 + 10}
+```
+
+When referencing arguments from functional call, use numbered shorthand `$0` for single argument. Provide argument name when there are more than one arguements. Examples: 
+
+**Preferred**:
+```swift
+let array: [Int] = [1, 2, 3, 4]
+let arrayString = array
+    .map{String($0)}
+    .joined(separator: ", ")
+
+var data: [String: Float] = ["A": 1.2, "B": 3.2]
+let dataString2 = data
+    .map {(key: String, value: Float) in
+    "key: \(key)" + ", " + "value: \(value)"}
+    .joined(separator: ", ")
+}
+```
+
+**Not Preferred**:
+```swift
+let array: [Int] = [1, 2, 3, 4]
+let arrayString = array
+    .map {intValue in
+    String(intValue)}
+    .joined(separator: ", ")
+
+var data: [String: Float] = ["A": 1.2, "B": 3.2]
+let dataString2 = data
+    .map {"key: \($0.0)" + ", " + "value: \($0.1 )"}
+    .joined(separator: ", ")
 ```
 
 ## Types
