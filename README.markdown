@@ -196,7 +196,7 @@ Note: Helper files should be created under the `Classes/ Common Components` dire
 
 ### URL String
  
-Declare Redfin's interal URL within it's corresponding data controller seperated by feature. For example, all RedfinNow related end-poitns should be added to `RedfinNowDataController`. For external urls, we should add the them to a single dedicated file. 
+Declare internal URLs within their corresponding data controllers, separated by feature. For example, all URLs related to "Awesome Feature" endpoints should be added to `AwesomeFeatureDataController`. It is okay for external urls to be added to a single file dedicated to them. 
 
 ### Protocol Conformance
 
@@ -602,7 +602,7 @@ let value = numbers
   .map {$0 + 10}
 ```
 
-When referencing arguments from functional call, use numbered shorthand `$0` for single argument. Provide argument name when there are more than one arguements. Examples: 
+When referencing arguments from a functional call, use numbered shorthand `$0` for the case of a single argument. Provide the argument name when there is more than one argument. Examples:
 
 **Preferred**:
 ```swift
