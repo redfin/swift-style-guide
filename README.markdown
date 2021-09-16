@@ -194,6 +194,10 @@ We prefer grouping public properties at the beginning of a class or struct, and 
 
 Note: Helper files should be created under the `Classes/ Common Components` directory.
 
+### URL String
+ 
+Declare internal URLs within their corresponding data controllers, separated by feature. For example, all URLs related to "Awesome Feature" endpoints should be added to `AwesomeFeatureDataController`. It is okay for external urls to be added to a single file dedicated to them. 
+
 ### Protocol Conformance
 
 In particular, when adding protocol conformance to a model, prefer adding a separate extension for the protocol methods. This keeps the related methods grouped together with the protocol and can simplify instructions to add a protocol to a class with its associated methods.
@@ -596,6 +600,37 @@ let value = numbers
   .map {$0 * 2}
   .filter {$0 > 50}
   .map {$0 + 10}
+```
+
+When referencing arguments from a functional call, use numbered shorthand `$0` for the case of a single argument. Provide the argument name when there is more than one argument. Examples:
+
+**Preferred**:
+```swift
+let array: [Int] = [1, 2, 3, 4]
+let arrayString = array
+    .map{String($0)}
+    .joined(separator: ", ")
+
+var data: [String: Float] = ["A": 1.2, "B": 3.2]
+let dataString2 = data
+    .map {(key: String, value: Float) in
+    "key: \(key)" + ", " + "value: \(value)"}
+    .joined(separator: ", ")
+}
+```
+
+**Not Preferred**:
+```swift
+let array: [Int] = [1, 2, 3, 4]
+let arrayString = array
+    .map {intValue in
+    String(intValue)}
+    .joined(separator: ", ")
+
+var data: [String: Float] = ["A": 1.2, "B": 3.2]
+let dataString2 = data
+    .map {"key: \($0.0)" + ", " + "value: \($0.1 )"}
+    .joined(separator: ", ")
 ```
 
 ## Types
