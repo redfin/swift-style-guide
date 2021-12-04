@@ -60,8 +60,7 @@ Strive to make your code compile without warnings. This rule informs many style 
 ## Naming
 
 Descriptive and consistent naming makes software easier to read and understand. Use the Swift naming conventions described in the [API Design Guidelines](https://swift.org/documentation/api-design-guidelines/). Some key takeaways include:
-
-- striving for clarity at the call site
+- clarity at the call site
 - prioritizing clarity over brevity
 - using `camelCase` (not `snake_case`)
 - using `UpperCamelCase` for types and protocols, `lowerCamelCase` for everything else
@@ -123,17 +122,17 @@ Use compiler inferred context to write shorter, clear code.  (Also see [Type Inf
 **Preferred**:
 ```swift
 let selector = #selector(viewDidLoad)
-view.backgroundColor = .red
 let toView = context.view(forKey: .to)
 let view = UIView(frame: .zero)
+view.backgroundColor = .red
 ```
 
 **Not Preferred**:
 ```swift
 let selector = #selector(ViewController.viewDidLoad)
-view.backgroundColor = UIColor.red
 let toView = context.view(forKey: UITransitionContextViewKey.to)
 let view = UIView(frame: CGRect.zero)
+view.backgroundColor = UIColor.red
 ```
 
 ### Generics
@@ -478,7 +477,7 @@ var diameter: Double {
 
 ### Final
 
-Marking classes or members as `final` can sometimes clarify your intent and is worth the cost. In the below example, `Box` has a particular purpose and customization in a derived class is not intended. Marking it `final` makes that clear.
+Marking classes or members as `final` can sometimes clarify your intent and is worth the cost. In the example below, `Box` has a particular purpose and customization in a derived class is not intended. Marking it `final` makes that clear.
 
 ```swift
 // Turn any generic type into a reference type using this Box class.
@@ -1011,11 +1010,16 @@ Do not write multiple statements on a single line separated with semicolons.
 **Preferred**:
 ```swift
 let swift = "not a scripting language"
+
+print(swift)
+print(swift)
 ```
 
 **Not Preferred**:
 ```swift
 let swift = "not a scripting language";
+
+print(swift); print(swift);
 ```
 
 **NOTE**: Swift is very different from JavaScript, where omitting semicolons is [generally considered unsafe](http://stackoverflow.com/questions/444080/do-you-recommend-using-semicolons-after-every-statement-in-javascript)
