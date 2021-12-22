@@ -666,15 +666,14 @@ You can define constants on a type rather than on an instance of that type using
 
 **Preferred**:
 ```swift
-enum Math {
-  static let e = 2.718281828459045235360287
-  static let root2 = 1.41421356237309504880168872
+struct Constants {
+  static let e: Double = 2.718281828459045235360287
+  static let root2: Double = 1.41421356237309504880168872
 }
 
-let hypotenuse = side * Math.root2
+let hypotenuse = side * Constants.root2
 
 ```
-**Note:** The advantage of using a case-less enumeration is that it can't accidentally be instantiated and works as a pure namespace.
 
 **Not Preferred**:
 ```swift
