@@ -1102,7 +1102,6 @@ sampleButton.addAction(UIAction(handler: { [weak self] _ in
 
 ```swift
 sampleButton.addTarget(self, action: #selector(yourButton), for: .touchUpInside)
-  """
 ```
 
 ## No Emoji
