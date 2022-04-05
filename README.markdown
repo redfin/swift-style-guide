@@ -1095,7 +1095,7 @@ When adding actions to buttons programatically, you're encouraged to move away f
 sampleButton.addAction(UIAction(
                 handler: { [weak self] _ in
                     guard let self = self else { return }
-                    self.yourFunction 
+                    self.yourFunction() 
                  }), 
                 for: .touchUpInside)
 ```
