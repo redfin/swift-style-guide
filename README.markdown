@@ -1105,17 +1105,6 @@ sampleButton.addTarget(self, action: #selector(yourButton), for: .touchUpInside)
   """
 ```
 
-**Not Preferred**:
-
-```swift
-let message = "You cannot charge the flux " +
-  "capacitor with a 9V battery.\n" +
-  "You must use a super-charger " +
-  "which costs 10 credits. You currently " +
-  "have \(credits) credits available."
-```
-
-
 ## No Emoji
 
 Do not use emoji in your projects. For those readers who actually type in their code, it's an unnecessary source of friction. While it may be cute, it doesn't add to the learning and it interrupts the coding flow for these readers.
