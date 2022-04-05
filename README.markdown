@@ -1092,16 +1092,19 @@ When adding actions to buttons programatically, you're encouraged to move away f
 **Preferred**:
 
 ```swift
-sampleButton.addAction(UIAction(handler: { [weak self] _ in
-                guard let self = self else { return }
-                self.yourFunction
-            }), for: .touchUpInside)
+sampleButton.addAction(UIAction(
+                handler: { [weak self] _ in
+                    guard let self = self else { return }
+                    self.yourFunction 
+                 }), 
+                for: .touchUpInside)
 ```
 
 **Not Preferred**:
 
 ```swift
-sampleButton.addTarget(self, action: #selector(yourButton), for: .touchUpInside)
+sampleButton.addTarget(self, action: #selector(yourButton), 
+                             for: .touchUpInside)
 ```
 
 ## No Emoji
