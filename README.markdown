@@ -1103,7 +1103,7 @@ sampleButton.addAction(UIAction(
 **Not Preferred**:
 
 ```swift
-sampleButton.addTarget(self, action: #selector(yourButton), 
+sampleButton.addTarget(self, action: #selector(yourSelectorFunction), 
                              for: .touchUpInside)
 ```
 
