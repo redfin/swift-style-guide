@@ -1085,6 +1085,28 @@ let message = "You cannot charge the flux " +
   "have \(credits) credits available."
 ```
 
+## Adding Actions to Buttons
+
+When adding actions to buttons programatically, you're encouraged to move away from having to use @objc tags when referencing functions by utilizing addAction instead of addTarget. 
+
+**Preferred**:
+
+```swift
+sampleButton.addAction(UIAction(
+                handler: { [weak self] _ in
+                    guard let self = self else { return }
+                    self.yourFunction() 
+                 }), 
+                for: .touchUpInside)
+```
+
+**Not Preferred**:
+
+```swift
+sampleButton.addTarget(self, action: #selector(yourSelectorFunction), 
+                             for: .touchUpInside)
+```
+
 ## No Emoji
 
 Do not use emoji in your projects. For those readers who actually type in their code, it's an unnecessary source of friction. While it may be cute, it doesn't add to the learning and it interrupts the coding flow for these readers.
