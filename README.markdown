@@ -450,8 +450,8 @@ UIView.animate(withDuration: 2.0) { [weak self] in
 **Not Preferred**:
 ```swift
 UIView.animate(withDuration: 2.0) { [weak self] in
-  guard let stringSelf = self else { return }
-  stringSelf.alpha = 1.0
+  guard let strongSelf = self else { return }
+  strongSelf.alpha = 1.0
 }
 ```
 
@@ -1087,7 +1087,7 @@ let message = "You cannot charge the flux " +
 
 ## Adding Actions to Buttons
 
-When adding actions to buttons programatically, you're encouraged to move away from having to use @objc tags when referencing functions by utilizing addAction instead of addTarget. 
+When adding actions to buttons programatically, you're encouraged to move away from having to use `@objc` tags when referencing functions by utilizing `addAction` instead of `addTarget`. 
 
 **Preferred**:
 
